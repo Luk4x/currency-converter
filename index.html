@@ -20,21 +20,29 @@
             <section class="content">
                 <label for="from-coins">Converter <span>de</span></label>
                 <select name="from-coins" id="from-coins">
-                    <option value="euro"><span class="coin-symbol">&#8364;</span>Euro</option>
-                    <option value="dollar"><span class="coin-symbol">&#36;</span>Dollar</option>
-                    <option value="bitcoin"><span class="coin-symbol">&#8383;</span>Bitcoin</option>
-                    <option value="real"><span class="coin-symbol">R$</span>Real</option>
+                    <option value="real">R$ Real</option>
                 </select>
                 <label for="to-coins">Converter <span>para</span></label>
                 <select name="to-coins" id="to-coins">
-                    <option value="euro">Euro</option>
-                    <option value="dollar">Dollar</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="real">Real</option>
+                    <option value="euro">&#8364; Euro</option>
+                    <option value="dollar">&#36; Dollar</option>
+                    <option value="bitcoin">&#8383; Bitcoin</option>
+                    <option value="yen">&#165; Yen</option>
                 </select>
                 <label for="user-value"><span>Valor</span></label>
                 <input type="number" name="user-value" id="user-value" />
-                <button>Converter</button>
+                <button class="convert-button">
+                    <a href="#arrow">Converter</a>
+                </button>
+            </section>
+            <section class="result">
+                <img src="./assets/brazil-flag.svg" alt="Brazil flag" id="to-convert-image" />
+                <p class="to-covert-symbol-name">Real</p>
+                <p class="to-convert-value">R$ 0</p>
+                <img src="./assets/arrow-down.svg" alt="arrow image" id="arrow" />
+                <img src="./assets/europe-flag.ico" alt="Europe flag" id="converted-image" />
+                <p class="converted-symbol-name">Euro</p>
+                <p class="converted-value">&#8364; 0</p>
             </section>
         </main>
     </body>
