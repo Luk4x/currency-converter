@@ -14,7 +14,29 @@
     </head>
     <body>
         <main>
-            <h1>A</h1>
+            <header class="title-background">
+                <h1 class="main-title">&lt;DevClub Convert Money/&gt;</h1>
+            </header>
+            <section class="content">
+                <label for="from-coins">Converter <span>de</span></label>
+                <select name="from-coins" id="from-coins">
+                    <option value="euro">Euro</option>
+                    <option value="dollar">Dollar</option>
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="real">Real</option>
+                </select>
+                <label for="to-coins">Converter <span>para</span></label>
+                <select name="to-coins" id="to-coins">
+                    <option value="euro">Euro</option>
+                    <option value="dollar">Dollar</option>
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="real">Real</option>
+                </select>
+                <label for="user-value"><span>Valor</span></label>
+                <input type="number" name="user-value" id="user-value" />
+                <button>Converter</button>
+            </section>
         </main>
     </body>
+    <script src="./app.js"></script>
 </html>
