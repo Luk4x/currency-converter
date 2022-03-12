@@ -28,8 +28,8 @@ main {
     align-items: center;
     color: whitesmoke;
     width: 100vw;
+    min-height: 100vh;
     margin: auto;
-    position: relative;
 }
 
 .title-background {
