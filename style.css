@@ -6,51 +6,63 @@
     outline: none;
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    line-height: 18px;
 }
 
 :root {
     --color1: #3c3744;
-    --color2: #090c9b;
-    --color3: #3d52d5;
-    --color4: #b4c5e4;
-    --color5: #fbfff1;
+    --color2: #3b3c47;
+    --color3: #4d5061;
+    --color4: #171219;
+    --color5: #e5e5e5;
+    --color6: #310d20;
 }
 
 body {
     background-color: var(--color5);
+    min-height: 100vh;
 }
 
 main {
-    background-color: var(--color1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: whitesmoke;
-    width: 100vw;
-    min-height: 100vh;
-    margin: auto;
 }
 
 .title-background {
-    background-color: var(--color3);
-    padding: 24px 0;
+    background-color: var(--color4);
+    border: 1px solid var(--color4);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
     width: 100%;
 }
 
 .main-title {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 400;
+    line-height: 30px;
     text-align: center;
-    line-height: 18px;
+    background: linear-gradient(-45deg, #6600a8, #8fa800);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    overflow-y: hidden;
+}
+
+.title-background > img {
+    margin-left: 20px;
 }
 
 section {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 0 24px;
-    position: relative;
+    width: 90%;
 }
 
 label {
@@ -66,17 +78,21 @@ label > span {
 }
 
 select,
-input {
-    /* https://www.youtube.com/watch?v=bB14uo0Tu5A */
-    border: 1px solid #bbbbbb;
+#user-value {
+    border: 2px solid var(--color2);
     border-radius: 4px;
     width: 100%;
     height: 48px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
     padding: 0 10px;
     font-size: 16px;
-    line-height: 18px;
-    background: whitesmoke;
+    background: var(--color3);
+    color: whitesmoke;
+}
+
+#user-value {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .convert-button {
@@ -85,28 +101,64 @@ input {
     margin-right: auto;
     width: 80%;
     height: 48px;
-    border-radius: 4px;
-    background: var(--color3);
+    background: transparent;
     cursor: pointer;
+    border: 2px solid var(--color3);
+    background: var(--color1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
     color: whitesmoke;
     font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
 }
 
-.convert-button > a {
-    display: block;
-    color: unset;
-    text-decoration: unset;
-    padding: 13px;
+.convert-button > span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.convert-button > span::after {
+    content: '»';
+    padding-left: 8px;
+    transition: 0.5s;
+}
+
+/*
+.convert-button > span::after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+}
+
+.convert-button:hover span {
+    padding-right: 15px;
+}
+
+.convert-button:hover span::after {
+    opacity: 1;
+    right: 0;
+}
+*/
+
+.convert-button:active {
+    opacity: 0.9;
+    transition: 0.3s;
 }
 
 .result {
-    margin: 30px 0;
-    border: 1px solid var(--color3);
+    margin: 50px 0;
+    border: 1px solid var(--color1);
     max-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .result > img {
@@ -116,13 +168,16 @@ input {
 .to-covert-symbol-name,
 .converted-symbol-name {
     font-size: 14px;
-    color: #777777;
+    margin: -3px 0;
+    color: var(--color1);
 }
 
 .to-convert-value,
 .converted-value {
     font-size: 20px;
+    margin: 6px 0;
     color: var(--color4);
+    overflow-y: hidden;
 }
 
 #arrow {
