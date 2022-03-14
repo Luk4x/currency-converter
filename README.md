@@ -1,3 +1,3 @@
 # devClub-convert-money
 
-Project under construction (mobile MVP)
+Project under construction (mobile and desktop MVP)
