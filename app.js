@@ -22,7 +22,7 @@ const convertedCurrencyImage = document.getElementById('converted-image');
 const convertedCurrencyName = document.querySelector('.converted-symbol-name');
 // currency symbol and value converted
 const convertedValue = document.querySelector('.converted-value');
-let currencySymbol = `&#8364;`;
+let currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
 // initial select quotation (euro)
 let quotation = request('EUR_BRL');
 convertedCurrencyName.textContent = `Euro (R$ ${quotation.toFixed(3).replace('.', ',')})`;
@@ -37,25 +37,26 @@ const convertButton = document.querySelector('.convert-button');
 option.addEventListener('change', () => {
     let newSrc = '';
     let currencyName = '';
+
     if (option.selectedIndex === 0) {
         newSrc = './assets/europe-flag.ico';
         currencyName = 'Euro';
-        currencySymbol = `&#8364;`;
         quotation = request('EUR_BRL');
+        currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
     } else if (option.selectedIndex === 1) {
         newSrc = './assets/us-flag.svg';
         currencyName = 'Dollar';
-        currencySymbol = `&#36;`;
         quotation = request('USD_BRL');
+        currencyModel = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
     } else if (option.selectedIndex === 2) {
         newSrc = './assets/japan-flag.svg';
         currencyName = 'Yen';
-        currencySymbol = '&#165;';
-        quotation = request('BRL_JPY');
+        quotation = request('JPY_BRL');
+        currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
     }
     convertedCurrencyImage.src = newSrc;
-    convertedCurrencyName.textContent = `${currencyName} (R$ ${quotation.toFixed(3).replace('.', ',')})`;
-    convertedValue.innerHTML = `${currencySymbol} 0`;
+    convertedCurrencyName.textContent = `${currencyName} (R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
+    convertedValue.innerHTML = `${currencyModel.format(0)}`;
 });
 
 // converting action
@@ -66,9 +67,9 @@ const convert = () => {
         convertedValue.innerHTML = `${currencySymbol} 0.00`;
     } else {
         userValue.style.borderColor = '#3b3c47';
-        result = parseFloat(userValue.value) * quotation;
-        toConvertValue.textContent = `R$ ${parseFloat(userValue.value).toFixed(2).replace('.', ',')}`;
-        convertedValue.innerHTML = `${currencySymbol} ${result.toFixed(2)}`;
+        result = parseFloat(userValue.value) / quotation;
+        toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(parseFloat(userValue.value));
+        convertedValue.innerHTML = `${currencyModel.format(result)}`;
     }
 };
 
