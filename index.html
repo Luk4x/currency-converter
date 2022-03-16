@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
         <link rel="shortcut icon" href="./assets/faviconluk4x.ico" type="image/x-icon" />
         <link rel="stylesheet" href="style.css" />
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <title>DevClub Currency Conversion</title>
     </head>
     <body>
@@ -22,13 +23,13 @@
                 <section class="content">
                     <label for="from-coins">Converter <span>de</span>:</label>
                     <select name="from-coins" id="from-coins">
-                        <option value="real">R$ Real</option>
+                        <option value="real">&#40; R$ &#41; Real</option>
                     </select>
                     <label for="to-coins">Converter <span>para</span>:</label>
                     <select name="to-coins" id="to-coins">
-                        <option value="euro">&#8364; Euro</option>
-                        <option value="dollar">&#36; Dollar</option>
-                        <option value="yen">&#165; Yen</option>
+                        <option value="euro">&#40; &#8364; &#41; Euro</option>
+                        <option value="dollar">&#40; &#36; &#41; Dollar</option>
+                        <option value="yen">&#40; &#165; &#41; Yen</option>
                     </select>
                     <label for="user-value"><span>Valor</span>:</label>
                     <input type="number" name="user-value" id="user-value" placeholder="ex: 1000" />
@@ -41,8 +42,37 @@
                     <img src="./assets/arrow-down.svg" alt="arrow image" id="arrow" />
                     <img src="./assets/europe-flag.ico" alt="Europe flag" id="converted-image" />
                     <p class="converted-symbol-name">Euro</p>
-                    <p class="converted-value">&#8364; 0.00</p>
+                    <p class="converted-value">0.00 &#8364;</p>
                 </section>
+                <footer class="social-links">
+                    <ul class="social-links-list">
+                        <li class="social-links-list-item">
+                            <a href="https://github.com/Luk4x" target="_blank" rel="external">
+                                <i class="bx bxl-github"></i>
+                            </a>
+                        </li>
+                        <li class="social-links-list-item">
+                            <a href="https://www.linkedin.com/in/lucasmacielf/" target="_blank" rel="external">
+                                <i class="bx bxl-linkedin-square"></i>
+                            </a>
+                        </li>
+                        <li class="social-links-list-item">
+                            <a href="https://www.instagram.com/this.time_29d/" target="_blank" rel="external noopener noreferrer">
+                                <i class="bx bxl-instagram-alt"></i>
+                            </a>
+                        </li>
+                        <li class="social-links-list-item">
+                            <a href="https://api.whatsapp.com/send?phone=5522998715442" target="_blank" rel="external">
+                                <i class="bx bxl-whatsapp-square"></i>
+                            </a>
+                        </li>
+                        <li class="social-links-list-item">
+                            <a href="https://t.me/lu_k4x" target="_blank" rel="external">
+                                <i class="bx bxl-telegram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </footer>
             </main>
         </div>
     </body>

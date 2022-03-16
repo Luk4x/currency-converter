@@ -6,9 +6,9 @@ function get(url) {
     return request.responseText;
 }
 
-// currency API
+// currconv currency API
 const request = currency => {
-    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=6b6c6149f67139c54d38`;
+    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=a9970d3f6698d4b793ef`;
     const api = get(url);
     const apiJ = JSON.parse(api);
     return apiJ[currency];
@@ -25,7 +25,7 @@ const convertedValue = document.querySelector('.converted-value');
 let currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
 // initial select quotation (euro)
 let quotation = request('EUR_BRL');
-convertedCurrencyName.textContent = `Euro (R$ ${quotation.toFixed(3).replace('.', ',')})`;
+convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
 // input value on content
 const userValue = document.getElementById('user-value');
 // input value on result
@@ -55,22 +55,27 @@ option.addEventListener('change', () => {
         currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
     }
     convertedCurrencyImage.src = newSrc;
-    convertedCurrencyName.textContent = `${currencyName} (R$ ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
-    convertedValue.innerHTML = `${currencyModel.format(0)}`;
+    convertedCurrencyName.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
+    convertedValue.innerHTML = currencyModel.format(0);
+    toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
 });
+
+// listening to input
+const setInputDefaultColor = () => {
+    userValue.style.borderColor = '#3b3c47';
+};
+userValue.addEventListener('change', setInputDefaultColor);
 
 // converting action
 const convert = () => {
     if (userValue.value == '') {
         userValue.style.borderColor = 'red';
-        toConvertValue.textContent = 'R$ 0,00';
-        convertedValue.innerHTML = `${currencySymbol} 0.00`;
+        toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
+        convertedValue.innerHTML = currencyModel.format(0);
     } else {
-        userValue.style.borderColor = '#3b3c47';
         result = parseFloat(userValue.value) / quotation;
         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(parseFloat(userValue.value));
-        convertedValue.innerHTML = `${currencyModel.format(result)}`;
+        convertedValue.innerHTML = currencyModel.format(result);
     }
 };
-
 convertButton.addEventListener('click', convert);

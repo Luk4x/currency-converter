@@ -19,7 +19,7 @@
 }
 
 body {
-    background: radial-gradient(var(--color5), var(--color3));
+    background: var(--color5);
     min-height: 100vh;
 }
 
@@ -29,6 +29,7 @@ main {
     justify-content: center;
     align-items: center;
     padding-bottom: 24px;
+    position: relative;
 }
 
 .title-background {
@@ -144,9 +145,10 @@ select,
 
 .result {
     border: 1px solid var(--color1);
-    width: 80%;
+    width: 70%;
     padding: 10px 0;
     position: relative;
+    margin-bottom: 70px;
 }
 
 .result > img {
@@ -169,6 +171,33 @@ select,
 
 #arrow {
     margin: 13px 0;
+}
+
+.social-links {
+    background-color: var(--color1);
+    padding: 5px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+}
+.social-links-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.social-links-list-item a i {
+    font-size: 30px;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color: var(--color5);
+}
+
+.social-links-list-item a i:hover {
+    transform: translateY(-3px) scale(1.2);
 }
 
 @media (min-width: 470px) {
@@ -203,13 +232,21 @@ select,
     body {
         background: var(--color1);
         padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     .container {
-        background: radial-gradient(var(--color5), var(--color3));
-        border: 2px solid var(--color4);
+        background: var(--color5);
+        outline: 2px solid var(--color4);
+        border: 10px solid transparent;
         border-radius: 4px;
-        max-width: 1080px;
-        margin: 50px auto;
+        width: 1080px;
+    }
+
+    .title-background {
+        border-radius: 10px;
     }
 
     main {
@@ -221,6 +258,14 @@ select,
 
     .content {
         width: 400px;
+    }
+
+    .result {
+        margin: 30px;
+    }
+
+    .social-links {
+        bottom: 0;
     }
 
     .convert-button > span::after {
