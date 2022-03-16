@@ -6,14 +6,35 @@ function get(url) {
     return request.responseText;
 }
 
-// currconv currency API
-const request = currency => {
-    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=a9970d3f6698d4b793ef`;
-    const api = get(url);
-    const apiJ = JSON.parse(api);
-    return apiJ[currency];
+// API limit error function
+const error = apiMessage => {
+    convertedCurrencyName.textContent = `Euro (R$ ?)`;
+    convertedValue.innerHTML = apiMessage;
+    convertedValue.style.fontSize = '16px';
+    convertedValue.style.textDecoration = 'underline';
+    realOption.disabled = true;
+    option.disabled = true;
+    userValue.style.opacity = '0.7';
+    userValue.disabled = true;
+    convertButton.style.opacity = '0.7';
+    convertButton.disabled = true;
 };
 
+// currconv currency API
+const request = currency => {
+    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=6b6c6149f67139c54d38`; // 6b6c6149f67139c54d38 | a9970d3f6698d4b793ef
+    const api = get(url);
+    const apiJ = JSON.parse(api);
+    if (apiJ['status'] === 400) {
+        error(apiJ['error']);
+        return apiJ['error'];
+    } else {
+        return apiJ[currency];
+    }
+};
+
+// 1° Select.
+const realOption = document.getElementById('from-coins');
 // 2° Select.
 const option = document.getElementById('to-coins');
 // foreign country flag image
@@ -23,15 +44,18 @@ const convertedCurrencyName = document.querySelector('.converted-symbol-name');
 // currency symbol and value converted
 const convertedValue = document.querySelector('.converted-value');
 let currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
-// initial select quotation (euro)
-let quotation = request('EUR_BRL');
-convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
 // input value on content
 const userValue = document.getElementById('user-value');
 // input value on result
 const toConvertValue = document.querySelector('.to-convert-value');
 // button
 const convertButton = document.querySelector('.convert-button');
+
+// initial select quotation (euro)
+let quotation = request('EUR_BRL');
+if (typeof quotation === 'number') {
+    convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
+}
 
 // changing elements according to the selected option
 option.addEventListener('change', () => {
