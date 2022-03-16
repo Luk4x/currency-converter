@@ -25,6 +25,8 @@ const request = currency => {
     let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=6b6c6149f67139c54d38`; // 6b6c6149f67139c54d38 | a9970d3f6698d4b793ef
     const api = get(url);
     const apiJ = JSON.parse(api);
+    // apiJ['status'] = 400;
+    // apiJ['error'] = 'Free API reached limit.';
     if (apiJ['status'] === 400) {
         error(apiJ['error']);
         return apiJ['error'];
