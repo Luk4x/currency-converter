@@ -61,6 +61,9 @@ if (typeof quotation === 'number') {
 
 // changing elements according to the selected option
 option.addEventListener('change', () => {
+    // resetting input
+    userValue.value = '';
+
     let newSrc = '';
     let currencyName = '';
 
@@ -86,11 +89,15 @@ option.addEventListener('change', () => {
     toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
 });
 
-// listening to input
-const setInputDefaultColor = () => {
-    userValue.style.borderColor = '#3b3c47';
+// input tweaks
+const inputSync = event => {
+    if (userValue.style.borderColor !== '#3b3c47') userValue.style.borderColor = '#3b3c47';
+
+    if (event.key === 'Enter') {
+        convert();
+    }
 };
-userValue.addEventListener('change', setInputDefaultColor);
+userValue.addEventListener('keypress', inputSync);
 
 // converting action
 const convert = () => {

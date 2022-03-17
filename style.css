@@ -100,7 +100,7 @@ select,
     padding: 0 10px;
     font-size: 16px;
     background: var(--color3);
-    color: whitesmoke;
+    color: var(--color5);
 }
 
 /* hide input arrows Chrome, Safari, Edge, Opera */
@@ -125,7 +125,7 @@ select,
     border: 2px solid var(--color3);
     background: var(--color4);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
-    color: whitesmoke;
+    color: var(--color5);
     font-size: 16px;
     position: relative;
     transition: all 0.3s ease-in-out;
@@ -174,7 +174,10 @@ select,
 .converted-value {
     font-size: 20px;
     margin: 6px 0;
-    color: var(--color4);
+    background: var(--color1);
+    padding: 4px;
+    border-radius: 4px;
+    color: var(--color5);
 }
 
 #arrow {
@@ -326,10 +329,10 @@ select,
 
     .background {
         background: var(--color5);
-        width: 101.67%;
-        height: 119.8%;
+        width: 101.8%;
+        height: 119.6%;
         position: absolute;
-        left: -9px;
+        left: -0.85%;
         top: -75px;
         border-radius: 100% 4px 4px 4px;
         box-shadow: -1px -1px 10px rgba(0, 0, 0, 0.2);
