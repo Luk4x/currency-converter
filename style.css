@@ -4,7 +4,7 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'KoHo', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -45,25 +45,29 @@ main {
 
 .main-title {
     font-size: 30px;
-    font-weight: 400;
-    line-height: 30px;
+    font-weight: 500;
     text-align: center;
     background: linear-gradient(45deg, var(--color6), var(--color7));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+    text-shadow: 0 0 10px #6500a882;
 }
 
-.title-background > img {
+.title-background > a {
+    margin-left: 15px;
+}
+
+.devClub-img {
     --slice-0: inset(50% 50% 50% 50%);
     --slice-1: inset(80% -6px 0 0);
     --slice-2: inset(50% -6px 30% 0);
     --slice-3: inset(10% -6px 85% 0);
     --slice-4: inset(40% -6px 43% 0);
     --slice-5: inset(80% -6px 5% 0);
-    margin-left: 20px;
     position: relative;
+    top: 3px;
     animation: 3s glitch linear 1s infinite;
 }
 
@@ -81,7 +85,6 @@ section {
 label {
     font-weight: 400;
     font-size: 18px;
-    line-height: 18px;
     margin-top: 23px;
     margin-bottom: 6px;
 }
@@ -127,7 +130,7 @@ select,
     background: var(--color4);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
     color: var(--color5);
-    font-size: 16px;
+    font-size: 17.4px;
     position: relative;
     transition: all 0.3s ease-in-out;
     border-radius: 4px;

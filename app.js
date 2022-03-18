@@ -6,7 +6,7 @@ function get(url) {
     return request.responseText;
 }
 
-// API limit error function
+// error: API limit function
 const error = apiMessage => {
     convertedCurrencyName.textContent = `Euro (R$ ?)`;
     convertedValue.innerHTML = apiMessage;
@@ -19,13 +19,13 @@ const error = apiMessage => {
     convertButton.disabled = true;
 };
 
-// currconv currency API
+// API
 const request = currency => {
-    // let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=5bc37222ff8c51fad7a3`;
+    // let url = `--`;
     // const api = get(url);
     // const apiJ = JSON.parse(api);
-    apiJ['status'] = 400;
-    apiJ['error'] = 'API removed. Come back later..';
+    // apiJ['status'] = 400;
+    // apiJ['error'] = 'API removed. Come back later..';
     // if (apiJ['status'] === 400) {
     //     error(apiJ['error']);
     //     return apiJ['error'];
@@ -33,7 +33,6 @@ const request = currency => {
     //     return apiJ[currency];
     // }
     error('API removed. Come back later..');
-    return 'API removed. Come back later..';
 };
 
 // 1° Select.
