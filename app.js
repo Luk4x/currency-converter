@@ -21,17 +21,19 @@ const error = apiMessage => {
 
 // currconv currency API
 const request = currency => {
-    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=`;
-    const api = get(url);
-    const apiJ = JSON.parse(api);
+    // let url = `--`;
+    // const api = get(url);
+    // const apiJ = JSON.parse(api);
     // apiJ['status'] = 400;
-    // apiJ['error'] = 'Free API reached limit.';
-    if (apiJ['status'] === 400) {
-        error(apiJ['error']);
-        return apiJ['error'];
-    } else {
-        return apiJ[currency];
-    }
+    // apiJ['error'] = 'API removed. Come back later..';
+    // if (apiJ['status'] === 400) {
+    //     error(apiJ['error']);
+    //     return apiJ['error'];
+    // } else {
+    //     return apiJ[currency];
+    // }
+    error('API removed. Come back later..');
+    return 'API removed. Come back later..';
 };
 
 // 1° Select.
