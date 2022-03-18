@@ -8,21 +8,20 @@ function get(url) {
 
 // API limit error function
 const error = apiMessage => {
-    convertedCurrencyName.textContent = `Euro (R$ ?)`;
-    convertedValue.innerHTML = apiMessage;
-    convertedValue.style.fontSize = '16px';
-    convertedValue.style.textDecoration = 'underline';
-    realOption.disabled = true;
-    option.disabled = true;
-    userValue.style.opacity = '0.7';
-    userValue.disabled = true;
-    convertButton.style.opacity = '0.7';
-    convertButton.disabled = true;
+    // convertedCurrencyName.textContent = `Euro (R$ ?)`;
+    // convertedValue.innerHTML = apiMessage;
+    // convertedValue.style.fontSize = '16px';
+    // realOption.disabled = true;
+    // option.disabled = true;
+    // userValue.style.opacity = '0.7';
+    // userValue.disabled = true;
+    // convertButton.style.opacity = '0.7';
+    // convertButton.disabled = true;
 };
 
 // currconv currency API
 const request = currency => {
-    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=6b6c6149f67139c54d38`; // 6b6c6149f67139c54d38 | a9970d3f6698d4b793ef
+    let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=a9970d3f6698d4b793ef`; // 6b6c6149f67139c54d38 | a9970d3f6698d4b793ef
     const api = get(url);
     const apiJ = JSON.parse(api);
     // apiJ['status'] = 400;
@@ -87,6 +86,8 @@ option.addEventListener('change', () => {
     convertedCurrencyName.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
     convertedValue.innerHTML = currencyModel.format(0);
     toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
+
+    widthAfterSync();
 });
 
 // input tweaks
@@ -99,6 +100,16 @@ const inputSync = event => {
 };
 userValue.addEventListener('keypress', inputSync);
 
+// syncing toConvert and converted value after width
+const widthAfterSync = () => {
+    const toConvertWidth = toConvertValue.offsetWidth;
+    const convertedWidth = convertedValue.offsetWidth;
+
+    toConvertValue.style.setProperty('--js-width1', `${toConvertWidth + 6}px`);
+    convertedValue.style.setProperty('--js-width2', `${convertedWidth + 6}px`);
+};
+widthAfterSync();
+
 // converting action
 const convert = () => {
     if (userValue.value == '') {
@@ -110,5 +121,7 @@ const convert = () => {
         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(parseFloat(userValue.value));
         convertedValue.innerHTML = currencyModel.format(result);
     }
+
+    widthAfterSync();
 };
 convertButton.addEventListener('click', convert);

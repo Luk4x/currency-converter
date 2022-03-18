@@ -30,6 +30,7 @@ main {
     align-items: center;
     padding-bottom: 24px;
     position: relative;
+    min-height: 100vh;
 }
 
 .title-background {
@@ -152,32 +153,72 @@ select,
 }
 
 .result {
-    border: 1px solid var(--color1);
+    border: 1px solid var(--color4);
+    background: var(--color4);
     width: 70%;
     padding: 10px 0;
     position: relative;
     margin-bottom: 70px;
+    position: relative;
 }
 
 .result > img {
     width: 58px;
+    z-index: 1;
+}
+
+.result > p {
+    z-index: 1;
+}
+
+.result-background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+
+    background: -moz-linear-gradient(45deg, transparent 15px, var(--color5) 15px), -moz-linear-gradient(135deg, transparent 15px, var(--color5) 15px), -moz-linear-gradient(225deg, transparent 15px, var(--color5) 15px), -moz-linear-gradient(315deg, transparent 15px, var(--color5) 15px);
+    background: -o-linear-gradient(45deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(135deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(225deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(315deg, transparent 15px, var(--color5) 15px);
+    background: -webkit-linear-gradient(45deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(135deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(225deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(315deg, transparent 15px, var(--color5) 15px);
+
+    background-position: bottom left, bottom right, top right, top left;
+    -moz-background-size: 50% 50%;
+    -webkit-background-size: 50% 50%;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
 }
 
 .to-covert-symbol-name,
 .converted-symbol-name {
     font-size: 14px;
-    margin: -3px 0;
     color: var(--color1);
 }
 
 .to-convert-value,
 .converted-value {
     font-size: 20px;
-    margin: 6px 0;
-    background: var(--color1);
-    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 4px;
-    color: var(--color5);
+    color: var(--color4);
+    position: relative;
+}
+
+.to-convert-value::after,
+.converted-value::after {
+    content: '';
+    width: var(--js-width1);
+    height: 6px;
+    border-radius: 8px;
+    background: var(--color4);
+    position: absolute;
+    bottom: -6px;
+    left: -3px;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.15);
+}
+
+.converted-value::after {
+    width: var(--js-width2);
 }
 
 #arrow {
@@ -220,7 +261,7 @@ select,
     top: 0;
     border-top-right-radius: 100%;
     z-index: -1;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes glitch {
@@ -308,7 +349,7 @@ select,
     }
 }
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 900px) {
     body {
         background: var(--color1);
         padding: 0 30px;
@@ -335,7 +376,7 @@ select,
         left: -0.85%;
         top: -75px;
         border-radius: 100% 4px 4px 4px;
-        box-shadow: -1px -1px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.15);
     }
 
     .title-background {
@@ -347,6 +388,7 @@ select,
         justify-content: space-evenly;
         max-width: 1080px;
         margin: auto;
+        min-height: unset;
     }
 
     .content {
