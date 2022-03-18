@@ -107,6 +107,19 @@ select,
     color: var(--color5);
 }
 
+#user-value {
+    border: 2px solid var(--color2);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 315px;
+    height: 48px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 0 10px;
+    font-size: 16px;
+    background: var(--color3);
+    color: var(--color5);
+}
+
 /* hide input arrows Chrome, Safari, Edge, Opera */
 #user-value::-webkit-outer-spin-button,
 #user-value::-webkit-inner-spin-button {
@@ -120,9 +133,9 @@ select,
 }
 
 .convert-button {
-    margin: 24px auto 50px auto;
+    margin: 30px auto 50px auto;
     width: 80%;
-    max-width: 250px;
+    max-width: 230px;
     height: 48px;
     background: transparent;
     cursor: pointer;
@@ -328,12 +341,13 @@ select,
     .convert-button::before {
         content: '';
         position: absolute;
-        top: -275px;
-        left: -102px;
+        top: -290px;
+        left: -112px;
         width: 8px;
         height: 400%;
         background: var(--color7);
         border-radius: 4px;
+        box-shadow: 0 0 8px #8fa8005a;
         animation: content-before-animation ease-in-out 2s;
     }
 
@@ -346,6 +360,7 @@ select,
         right: -30px;
         background: var(--color6);
         border-radius: 4px;
+        box-shadow: 0 0 8px #6600a85a;
         animation: result-before-animation ease-in-out 2s;
     }
 
@@ -374,7 +389,7 @@ select,
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 950px) {
     body {
         background: var(--color1);
         padding: 0 30px;
@@ -388,7 +403,7 @@ select,
         outline: 2px solid var(--color4);
         border: 10px solid transparent;
         border-radius: 4px;
-        width: 1080px;
+        width: 1100px;
         position: relative;
         z-index: 1;
     }
