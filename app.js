@@ -21,11 +21,11 @@ const error = apiMessage => {
 
 // currconv currency API
 const request = currency => {
-    // let url = `--`;
+    // let url = `https://free.currconv.com/api/v7/convert?q=${currency}&compact=ultra&apiKey=5bc37222ff8c51fad7a3`;
     // const api = get(url);
     // const apiJ = JSON.parse(api);
-    // apiJ['status'] = 400;
-    // apiJ['error'] = 'API removed. Come back later..';
+    apiJ['status'] = 400;
+    apiJ['error'] = 'API removed. Come back later..';
     // if (apiJ['status'] === 400) {
     //     error(apiJ['error']);
     //     return apiJ['error'];
