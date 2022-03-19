@@ -24,15 +24,19 @@
             <main>
                 <section class="content">
                         <label for="from-coins">Convert <span>from</span>:</label>
-                        <select name="from-coins" id="from-coins">
-                            <option value="real">&#40; R$ &#41; Real</option>
-                        </select>
+                        <div class="custom-select">
+                            <select name="from-coins" id="from-coins">
+                                <option value="real">&#40; R$ &#41; Real</option>
+                            </select>
+                        </div>
                         <label for="to-coins">Convert <span>to</span>:</label>
-                        <select name="to-coins" id="to-coins">
-                            <option value="euro">&#40; &#8364; &#41; Euro</option>
-                            <option value="dollar">&#40; &#36; &#41; Dollar</option>
-                            <option value="yen">&#40; &#165; &#41; Yen</option>
-                        </select>
+                        <div class="custom-select">
+                            <select name="to-coins" id="to-coins">
+                                <option value="euro">&#40; &#8364; &#41; Euro</option>
+                                <option value="dollar">&#40; &#36; &#41; Dollar</option>
+                                <option value="yen">&#40; &#165; &#41; Yen</option>
+                            </select>
+                        </div>
                         <label for="user-value"><span>Value</span>:</label>
                         <input type="number" name="user-value" id="user-value" placeholder="ex: 1000" />
                     <button class="convert-button"><span>Convert</span></button>
@@ -44,7 +48,7 @@
                     <img src="./assets/arrow-down.svg" alt="arrow image" id="arrow" />
                     <img src="./assets/europe-flag.ico" alt="Europe flag" id="converted-image" />
                     <p class="converted-symbol-name">Euro</p>
-                    <p class="converted-value">0.00 &#8364;</p>
+                    <p class="converted-value">0,00 &#8364;</p>
                     <div class="result-background"></div>
                 </section>
                 <footer class="social-links">

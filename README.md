@@ -1,3 +1,3 @@
-# devClub-convert-money
+# Currency Converter
 
-Project under construction (mobile and desktop MVP)
+Project under construction

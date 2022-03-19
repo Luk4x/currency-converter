@@ -5,7 +5,6 @@
     border: none;
     outline: none;
     font-family: 'KoHo', sans-serif;
-    scroll-behavior: smooth;
 }
 
 :root {
@@ -68,7 +67,7 @@ main {
     --slice-5: inset(80% -6px 5% 0);
     position: relative;
     top: 3px;
-    animation: 3s glitch linear 1s infinite;
+    animation: 4s glitch linear 1s infinite;
 }
 
 section {
@@ -93,31 +92,67 @@ label > span {
     font-weight: 500;
 }
 
-select,
-#user-value {
-    border: 2px solid var(--color2);
-    border-radius: 4px;
+.custom-select {
+    position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     height: 48px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    padding: 0 10px;
-    font-size: 16px;
+    background: var(--color2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    border: 2px solid var(--color2);
+}
+
+.custom-select::before {
+    content: '\2935';
+    color: var(--color5);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.custom-select::after {
+    content: '';
+    background: var(--color2);
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    cursor: pointer;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    font-size: 18px;
     background: var(--color3);
     color: var(--color5);
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    cursor: pointer;
 }
 
 #user-value {
     border: 2px solid var(--color2);
     border-radius: 4px;
     width: 100%;
-    max-width: 315px;
+    max-width: 300px;
     height: 48px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
     padding: 0 10px;
     font-size: 16px;
     background: var(--color3);
     color: var(--color5);
+    transition: all ease-in-out 0.5s;
 }
 
 /* hide input arrows Chrome, Safari, Edge, Opera */
@@ -197,7 +232,7 @@ select,
     background: -o-linear-gradient(45deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(135deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(225deg, transparent 15px, var(--color5) 15px), -o-linear-gradient(315deg, transparent 15px, var(--color5) 15px);
     background: -webkit-linear-gradient(45deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(135deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(225deg, transparent 15px, var(--color5) 15px), -webkit-linear-gradient(315deg, transparent 15px, var(--color5) 15px);
 
-    background-position: bottom left, bottom right, top right, top left;
+    background-position: bottom left, bottom right, top right, top left, center center;
     -moz-background-size: 50% 50%;
     -webkit-background-size: 50% 50%;
     background-size: 50% 50%;
@@ -231,6 +266,7 @@ select,
     bottom: -6px;
     left: -3px;
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.15);
+    transition: all ease-in-out 0.8s;
 }
 
 .converted-value::after {
@@ -278,6 +314,7 @@ select,
     border-top-right-radius: 100%;
     z-index: -1;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 1.2s;
 }
 
 @keyframes glitch {
@@ -337,18 +374,18 @@ select,
     }
 }
 
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 390px) {
     .convert-button::before {
         content: '';
         position: absolute;
-        top: -290px;
-        left: -112px;
+        top: -295;
+        left: -62px;
         width: 8px;
-        height: 400%;
+        height: 430%;
         background: var(--color7);
         border-radius: 4px;
         box-shadow: 0 0 8px #8fa8005a;
-        animation: content-before-animation ease-in-out 2s;
+        animation: content-before-animation ease-in-out 8.5s infinite;
     }
 
     .result::before {
@@ -361,26 +398,34 @@ select,
         background: var(--color6);
         border-radius: 4px;
         box-shadow: 0 0 8px #6600a85a;
-        animation: result-before-animation ease-in-out 2s;
+        animation: result-before-animation ease-in-out 8.5s infinite;
     }
 
     @keyframes result-before-animation {
         0% {
-            height: 5%;
+            top: 170px;
+        }
+
+        50% {
+            top: -390px;
         }
 
         100% {
-            height: 55%;
+            top: 170px;
         }
     }
 
     @keyframes content-before-animation {
         0% {
-            height: 40%;
+            top: -295px;
+        }
+
+        50% {
+            top: 266px;
         }
 
         100% {
-            height: 400%;
+            top: -295px;
         }
     }
 
@@ -389,7 +434,7 @@ select,
     }
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 900px) {
     body {
         background: var(--color1);
         padding: 0 30px;
@@ -414,7 +459,7 @@ select,
         height: 119.6%;
         position: absolute;
         left: -0.85%;
-        top: -75px;
+        top: -80px;
         border-radius: 100% 4px 4px 4px;
         box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.15);
     }
@@ -433,6 +478,14 @@ select,
 
     .content {
         width: 400px;
+    }
+
+    .convert-button::before {
+        animation-duration: 4.5s;
+    }
+
+    .result::before {
+        animation-duration: 4.5s;
     }
 
     .result {
@@ -457,5 +510,33 @@ select,
     .convert-button:hover span::after {
         opacity: 1;
         right: 0;
+    }
+
+    @keyframes result-before-animation {
+        0% {
+            top: 170px;
+        }
+
+        50% {
+            top: -10px;
+        }
+
+        100% {
+            top: 170px;
+        }
+    }
+
+    @keyframes content-before-animation {
+        0% {
+            top: -295px;
+        }
+
+        50% {
+            top: -130px;
+        }
+
+        100% {
+            top: -295px;
+        }
     }
 }

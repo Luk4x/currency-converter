@@ -8,11 +8,19 @@ function get(url) {
 
 // error: API limit function
 const error = apiMessage => {
+    // custom select
+    const customOption = document.querySelectorAll('.custom-select');
+    // 1° Select.
+    const realOption = document.getElementById('from-coins');
+
     convertedCurrencyName.textContent = `Euro (R$ ?)`;
     convertedValue.innerHTML = apiMessage;
     convertedValue.style.fontSize = '16px';
     realOption.disabled = true;
     option.disabled = true;
+    customOption.forEach(element => {
+        element.style.opacity = '0.7';
+    });
     userValue.style.opacity = '0.7';
     userValue.disabled = true;
     convertButton.style.opacity = '0.7';
@@ -32,15 +40,13 @@ const request = currency => {
     // } else {
     //     return apiJ[currency];
     // }
+
     error('API removed. Come back later..');
+    return 5;
 };
 
-// 1° Select.
-const realOption = document.getElementById('from-coins');
 // 2° Select.
 const option = document.getElementById('to-coins');
-// foreign country flag image
-const convertedCurrencyImage = document.getElementById('converted-image');
 // currency name and value in real (under the flag image)
 const convertedCurrencyName = document.querySelector('.converted-symbol-name');
 // currency symbol and value converted
@@ -64,6 +70,9 @@ option.addEventListener('change', () => {
     // resetting input
     userValue.value = '';
 
+    // foreign country flag image
+    const convertedCurrencyImage = document.getElementById('converted-image');
+
     let newSrc = '';
     let currencyName = '';
 
@@ -83,6 +92,7 @@ option.addEventListener('change', () => {
         quotation = request('JPY_BRL');
         currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
     }
+
     convertedCurrencyImage.src = newSrc;
     convertedCurrencyName.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
     convertedValue.innerHTML = currencyModel.format(0);
@@ -114,7 +124,7 @@ widthAfterSync();
 // converting action
 const convert = () => {
     if (userValue.value == '') {
-        userValue.style.borderColor = 'red';
+        userValue.style.borderColor = '#980d0d';
         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
         convertedValue.innerHTML = currencyModel.format(0);
     } else {
