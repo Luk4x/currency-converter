@@ -29,20 +29,16 @@ const error = apiMessage => {
 
 // API
 const request = currency => {
-    // let url = `--`;
-    // const api = get(url);
-    // const apiJ = JSON.parse(api);
-    // apiJ['status'] = 400;
-    // apiJ['error'] = 'API removed. Come back later..';
-    // if (apiJ['status'] === 400) {
-    //     error(apiJ['error']);
-    //     return apiJ['error'];
-    // } else {
-    //     return apiJ[currency];
-    // }
-
-    error('API removed. Come back later..');
-    return 5;
+    let url = `https://v6.exchangerate-api.com/v6/08100e530673db967b120595/latest/${currency}`;
+    const api = get(url);
+    const apiJ = JSON.parse(api);
+    // console.log(apiJ);
+    if (apiJ['result'] === 'success') {
+        return apiJ['conversion_rates']['BRL'];
+    } else {
+        error(apiJ['error-type']);
+        return 0;
+    }
 };
 
 // 2° Select.
@@ -60,7 +56,7 @@ const toConvertValue = document.querySelector('.to-convert-value');
 const convertButton = document.querySelector('.convert-button');
 
 // initial select quotation (euro)
-let quotation = request('EUR_BRL');
+let quotation = request('EUR');
 if (typeof quotation === 'number') {
     convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
 }
@@ -79,17 +75,17 @@ option.addEventListener('change', () => {
     if (option.selectedIndex === 0) {
         newSrc = './assets/europe-flag.ico';
         currencyName = 'Euro';
-        quotation = request('EUR_BRL');
+        quotation = request('EUR');
         currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
     } else if (option.selectedIndex === 1) {
         newSrc = './assets/us-flag.svg';
         currencyName = 'Dollar';
-        quotation = request('USD_BRL');
+        quotation = request('USD');
         currencyModel = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
     } else if (option.selectedIndex === 2) {
         newSrc = './assets/japan-flag.svg';
         currencyName = 'Yen';
-        quotation = request('JPY_BRL');
+        quotation = request('JPY');
         currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
     }
 

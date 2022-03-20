@@ -277,14 +277,14 @@ select {
     margin: 13px 0;
 }
 
-.social-links {
+.links {
     background-color: var(--color1);
     padding: 5px;
     border-radius: 10px;
     position: absolute;
     bottom: 10px;
 }
-.social-links-list {
+.links-list {
     display: flex;
     flex-direction: row;
     list-style-type: none;
@@ -292,7 +292,7 @@ select {
     align-items: center;
 }
 
-.social-links-list-item a i {
+.links-list-item a i {
     font-size: 30px;
     margin: 0 6px;
     cursor: pointer;
@@ -300,8 +300,26 @@ select {
     color: var(--color5);
 }
 
-.social-links-list-item a i:hover {
+.links-list-item a i:hover {
     transform: translateY(-3px) scale(1.2);
+}
+
+#api-link {
+    padding-left: 5px;
+    z-index: 1;
+}
+
+#api-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background: var(--color4);
+    z-index: -1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .background {
@@ -314,7 +332,7 @@ select {
     border-top-right-radius: 100%;
     z-index: -1;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    transition: all ease-in-out 1.2s;
+    transition: all 1.2s ease-in-out 0.1s;
 }
 
 @keyframes glitch {
@@ -510,6 +528,10 @@ select {
     .convert-button:hover span::after {
         opacity: 1;
         right: 0;
+    }
+
+    .links {
+        bottom: 0;
     }
 
     @keyframes result-before-animation {
