@@ -4,7 +4,7 @@
 
 Currency Converter is a project inspired by <a href='https://www.figma.com/file/eg239o5MNJCj9asPPwzkrQ/CodeClub-Convert-Money?node-id=25%3A109'>DevClub Convert Money</a>.
 Following the Mobile First concept, I basically used HTML, CSS (with the help of MediaQueries and KeyFrames) and Javascript to get this result.
-This project brought me a lot of learning, and for more information, you can check out <a href='https://www.linkedin.com/feed/update/urn:li:activity:6911292330431942656/'>his post on Linkedin</a>.
+This project brought me a lot of learning, and for more information, you can check out <a href='https://www.linkedin.com/feed/update/urn:li:activity:6911292330431942656/'>his post</a> on my Linkedin.
 
 ## Result
 
