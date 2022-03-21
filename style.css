@@ -103,17 +103,6 @@ label > span {
     border: 2px solid var(--color2);
 }
 
-.custom-select::before {
-    content: '\2935';
-    color: var(--color5);
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-    pointer-events: none;
-    cursor: pointer;
-}
-
 .custom-select::after {
     content: '';
     background: var(--color2);
@@ -124,6 +113,17 @@ label > span {
     pointer-events: none;
     z-index: 0;
     cursor: pointer;
+}
+
+.custom-select > i {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    color: var(--color5);
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 1;
+    transition: all ease-in-out 0.3s;
 }
 
 select {
@@ -139,6 +139,10 @@ select {
     height: 100%;
     padding: 0 10px;
     cursor: pointer;
+}
+
+.custom-select:hover i {
+    color: #8fa800;
 }
 
 #user-value {
@@ -454,7 +458,7 @@ select {
 
 @media screen and (min-width: 900px) {
     body {
-        background: var(--color1);
+        background: var(--color2);
         padding: 0 30px;
         display: flex;
         justify-content: center;
