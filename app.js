@@ -55,14 +55,19 @@ const toConvertValue = document.querySelector('.to-convert-value');
 // button
 const convertButton = document.querySelector('.convert-button');
 
-// initial select quotation (euro)
-let quotation = request('EUR');
-if (typeof quotation === 'number') {
-    convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
+// requesting quotations
+const euroQuotation = request('EUR');
+if (typeof euroQuotation === 'number') {
+    // showing initial quotation (euro)
+    convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(euroQuotation)})`;
 }
+const dollarQuotation = request('USD');
+const YenQuotation = request('JPY');
 
 // changing elements according to the selected option
 option.addEventListener('change', () => {
+    meme = document.querySelector('.dollarLessThan5');
+
     // resetting input
     userValue.value = '';
 
@@ -75,18 +80,21 @@ option.addEventListener('change', () => {
     if (option.selectedIndex === 0) {
         newSrc = './assets/europe-flag.ico';
         currencyName = 'Euro';
-        quotation = request('EUR');
+        quotation = euroQuotation;
         currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+        meme.style.display = 'none';
     } else if (option.selectedIndex === 1) {
         newSrc = './assets/us-flag.svg';
         currencyName = 'Dollar';
-        quotation = request('USD');
+        quotation = dollarQuotation;
         currencyModel = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+        if (quotation < 5) meme.style.display = 'block';
     } else if (option.selectedIndex === 2) {
         newSrc = './assets/japan-flag.svg';
         currencyName = 'Yen';
-        quotation = request('JPY');
+        quotation = YenQuotation;
         currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
+        meme.style.display = 'none';
     }
 
     convertedCurrencyImage.src = newSrc;

@@ -281,6 +281,27 @@ select {
     margin: 13px 0;
 }
 
+.dollarLessThan5 {
+    z-index: 1;
+    margin-top: -40px;
+    margin-bottom: 60px;
+    background: var(--color2);
+    opacity: 0.85;
+    color: var(--color5);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.517);
+    display: none;
+}
+
+.dollarLessThan5 > img {
+    width: 130px;
+    display: block;
+    margin: auto;
+    clip-path: circle(50% at 50% 50%);
+}
+
 .links {
     background-color: var(--color1);
     padding: 5px;
@@ -514,7 +535,7 @@ select {
         margin: 30px;
     }
 
-    .social-links {
+    .links {
         bottom: 0;
     }
 
@@ -532,6 +553,14 @@ select {
     .convert-button:hover span::after {
         opacity: 1;
         right: 0;
+    }
+
+    .dollarLessThan5 {
+        color: var(--color2);
+        background: var(--color5);
+        position: fixed;
+        bottom: -50px;
+        right: 10px;
     }
 
     .links {
