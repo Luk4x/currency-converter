@@ -82,19 +82,19 @@ option.addEventListener('change', () => {
         currencyName = 'Euro';
         quotation = euroQuotation;
         currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
-        meme.style.display = 'none';
+        meme.style.opacity = '0';
     } else if (option.selectedIndex === 1) {
         newSrc = './assets/us-flag.svg';
         currencyName = 'Dollar';
         quotation = dollarQuotation;
         currencyModel = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-        if (quotation < 5) meme.style.display = 'block';
+        if (quotation < 5) meme.style.opacity = '0.85';
     } else if (option.selectedIndex === 2) {
         newSrc = './assets/japan-flag.svg';
         currencyName = 'Yen';
         quotation = YenQuotation;
         currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
-        meme.style.display = 'none';
+        meme.style.opacity = '0';
     }
 
     convertedCurrencyImage.src = newSrc;
