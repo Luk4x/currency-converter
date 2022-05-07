@@ -1,11 +1,3 @@
-// request function
-function get(url) {
-    let request = new XMLHttpRequest();
-    request.open('GET', url, false);
-    request.send();
-    return request.responseText;
-}
-
 // error: API limit function
 const error = apiMessage => {
     // custom select
@@ -28,17 +20,9 @@ const error = apiMessage => {
 };
 
 // API
-const request = currency => {
-    let url = `https://v6.exchangerate-api.com/v6/08100e530673db967b120595/latest/${currency}`;
-    const api = get(url);
-    const apiJ = JSON.parse(api);
-    // console.log(apiJ);
-    if (apiJ['result'] === 'success') {
-        return apiJ['conversion_rates']['BRL'];
-    } else {
-        error(apiJ['error-type']);
-        return 0;
-    }
+const request = async currency => {
+    const data = await fetch('http://economia.awesomeapi.com.br/json/last/EUR-BRL,USD-BRL,JPY-BRL').then(res => res.json());
+    return data[currency].high;
 };
 
 // 2° Select.
@@ -55,17 +39,19 @@ const toConvertValue = document.querySelector('.to-convert-value');
 // button
 const convertButton = document.querySelector('.convert-button');
 
-// requesting quotations
-const euroQuotation = request('EUR');
-if (typeof euroQuotation === 'number') {
-    // showing initial quotation (euro)
+const initialEuro = async () => {
+    const euroQuotation = await request('EURBRL');
     convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(euroQuotation)})`;
-}
-const dollarQuotation = request('USD');
-const YenQuotation = request('JPY');
+};
+initialEuro();
 
 // changing elements according to the selected option
-option.addEventListener('change', () => {
+option.addEventListener('change', async () => {
+    // requesting quotations
+    const euroQuotation = await request('EURBRL');
+    const dollarQuotation = await request('USDBRL');
+    const YenQuotation = await request('JPYBRL');
+
     meme = document.querySelector('.dollarLessThan5');
 
     // resetting input
@@ -76,6 +62,7 @@ option.addEventListener('change', () => {
 
     let newSrc = '';
     let currencyName = '';
+    let quotation = 0;
 
     if (option.selectedIndex === 0) {
         newSrc = './assets/europe-flag.ico';
@@ -126,7 +113,22 @@ const widthAfterSync = () => {
 widthAfterSync();
 
 // converting action
-const convert = () => {
+const convert = async () => {
+    // requesting quotations
+    const euroQuotation = await request('EURBRL');
+    const dollarQuotation = await request('USDBRL');
+    const YenQuotation = await request('JPYBRL');
+
+    let quotation = 0;
+
+    if (option.selectedIndex === 0) {
+        quotation = euroQuotation;
+    } else if (option.selectedIndex === 1) {
+        quotation = dollarQuotation;
+    } else if (option.selectedIndex === 2) {
+        quotation = YenQuotation;
+    }
+
     if (userValue.value == '') {
         userValue.style.borderColor = '#980d0d';
         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
