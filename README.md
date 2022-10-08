@@ -56,6 +56,7 @@ Consumindo a [API](https://docs.awesomeapi.com.br/api-de-moedas) de moedas e obt
 - Utilização de KeyFrames para animações mais aparentes e complexas e CSS Transition pra as mais simples;
 - Caso o Dollar fique abaixo de R$5,00, aparecerá um meme do Thanos;
 - Pequeno mapeamento da tecla `Enter` para realizar a conversão;
+- Utilização do método `Intl.NumberFormat()` para a formatação dos números;
 
 ## 📖 Clonando o Projeto
 
