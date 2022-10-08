@@ -56,6 +56,7 @@ Consuming the [API](https://docs.awesomeapi.com.br/api-de-moedas) of coins and g
 - Use of KeyFrames for more apparent and complex animations and CSS Transition for simpler ones;
 - If the Dollar is below R$5.00, a Thanos meme will appear;
 - Small mapping of the `Enter` key to perform the conversion;
+- Use of the `Intl.NumberFormat()` method to format numbers;
 
 ## 📖 Cloning the Project
 
