@@ -43,8 +43,53 @@
 
 > Assistir o vídeo acima e/ou acessar o projeto online ajudará na compreensão da explicação!
 
-O Currency Converter é uma aplicação web de conversão de moedas inspirada no [DevClub Convert Money](https://www.figma.com/file/eg239o5MNJCj9asPPwzkrQ/CodeClub-Convert-Money?node-id=25%3A109). Ele converte de `R$-Real` para `$-Dollar`, `€-Euro` e `￥-Yen`.
+O Currency Converter é uma aplicação web de conversão de moedas inspirada no desafio [DevClub Convert Money](https://www.figma.com/file/eg239o5MNJCj9asPPwzkrQ/CodeClub-Convert-Money?node-id=25%3A109), e me rendeu bastante aprendizado.<br>
+Seguindo o conceito de Mobile-First, me aprofundei mais em HTML, CSS e Javascript para obter tal resultado, que tanto em layout quanto em funcionalidades, se distanciou bastante do modelo original.<br>
+Consumindo a [API](https://docs.awesomeapi.com.br/api-de-moedas) de moedas e obtendo os valores em tempo real, ele converte de `R$-Real` para `$-Dollar`, `€-Euro` e `￥-Yen`.
 
-Following the Mobile First concept, I basically used HTML, CSS (with the help of MediaQueries and KeyFrames) and Javascript to get this result.
-This project brought me a lot of learning
+### 📌 Alguns Destaques
+
+- Utilização de variáveis CSS e manipulação das mesmas via Javascript;
+- Consumo de API via Javascript FetchAPI;
+- Estilização completa da rígida tag HTML Select;
+- Utilização de MediaQueries para o desenvolvimento da responsividade;
+- Utilização de KeyFrames para animações mais aparentes e complexas e CSS Transition pra as mais simples;
+- Caso o Dollar fique abaixo de R$5,00, aparecerá um meme do Thanos;
+- Pequeno mapeamento da tecla `Enter` para realizar a conversão;
+
+## 📖 Clonando o Projeto
+
+Para clonar e executar este projeto em seu computador, você precisará apenas que o [Git](https://git-scm.com/) esteja previamente instalado.<br>
+Feito isso, no terminal:
+
+```bash
+# Clone esse repositório com:
+> git clone https://github.com/Luk4x/devClub-convert-money.git
+
+# Entre no repositório com:
+> cd devClub-convert-money
+
+# Execute o projeto com:
+> start index.html # Para usuários de Windows
+> open index.html # Para usuários de Linux/Mac
+```
+
+## 🤝 Contato dos Contribuintes
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/lucasmacielf/">
+        <img src="https://avatars.githubusercontent.com/Luk4x" width="150px;" alt="Luk4x Github Photo"/><br>
+        <sub>
+          <b>Lucas Maciel</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+<p align="right">
+  <a href="#-currency-converter-project">Voltar ao Topo</a>
+</p>
 
